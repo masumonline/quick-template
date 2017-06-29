@@ -1,0 +1,72 @@
+<div class="bottom-panel helloworld-panel" id="helloworldPanel">
+    <script>
+        var docIndex = 1;
+        var DocumentManager = brackets.getModule("document/DocumentManager");
+        var MainViewManager = brackets.getModule("view/MainViewManager");
+
+        var CommandManager = brackets.getModule("command/CommandManager"),
+            Menus = brackets.getModule("command/Menus"),
+            panelManager = brackets.getModule("view/WorkspaceManager"),
+            ExtensionUtils = brackets.getModule("utils/ExtensionUtils"), 
+            AppInit = brackets.getModule("utils/AppInit");
+        
+            var xurl = "text.html";
+        
+
+        function ali() {
+            var getJSON = function(url) {
+                return new Promise(function(resolve, reject) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('get', url, true);
+                    xhr.responseType = 'json';
+                    xhr.onload = function() {
+                        var status = xhr.status;
+                        if (status == 200) {
+                            resolve(xhr.response);
+                        } else {
+                            reject(status);
+                        }
+                    };
+                    xhr.send();
+                });
+            };
+
+            getJSON('http://localhost/brackets_theme/api.php').then(function(data) {
+
+                $.each(data, function(data, value) {
+                    result.innerHTML += 
+                        "<div class='box'>" +
+                        "<div class='title'>" + value.theme_name + "</div><hr>"+
+                        "<div class='theme_thumb'>" + "<img onclick='getFile(this.id)' src='"+value.theme_thumb +"' id='"+value.theme_url +"'  >" +
+                        "</div>" +
+                        "</div>";
+                });
+
+            }, function(status) { 
+                alert('Something went wrong.');
+            });
+        }
+
+        function templateHandle(templateContent) {
+            try {
+                var activeEditor = EditorManager.getActiveEditor();
+                activeEditor.document.replaceRange(templateContent, activeEditor.getCursorPos());
+            } catch (err) {}
+        }
+
+        function getFile(xurl) {
+            var defaultExtension = ".html",
+                doc = DocumentManager.createUntitledDocument(docIndex++, defaultExtension);
+
+            MainViewManager._edit(MainViewManager.ACTIVE_PANE, doc);
+            templateHandle(xurl);
+            return new $.Deferred().resolve(doc).promise();
+        }
+        ali();
+
+
+    </script>
+    <h3 class="text-center">Quick Theme</h3>
+    <div id="result"> 
+    </div>
+</div>
