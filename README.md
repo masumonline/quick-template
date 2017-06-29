@@ -1,31 +1,23 @@
-## Synopsis
+## that is Quick Theme
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+Quick Theme is a html template provider for Brackers.io Editor . that ad d html template to your brackers editor. when you want to create a new web project you need loots of starting code. this extention make it easy to add html code to yor project.
 
 ## Code Example
 
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
-## Motivation
-
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
-
 ## Installation
 
-Provide code examples and explanations of how to get the project.
+Open Brackets Extention manager then search quicktheme. then click install. or download the git as zip then open Extention Manager then drug the zip to Extention Drap place.
 
-## API Reference
+## Uses
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+After Install. click File menu then Quick Theme in menu. or CTRl+Alt+Q for shortcut.
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
-
-## Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+This Extention Tested with Brackets 1.8 and 1.9 in Windows, Linux nad Mac. Don't rename the files you find there in order to keep the extension working.
 
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+license (MIT)
