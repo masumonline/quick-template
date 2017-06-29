@@ -2,17 +2,17 @@
     <script>
 
         var docIndex = 1,
-		DocumentManager = brackets.getModule("document/DocumentManager"),
-		Commands = brackets.getModule("command/Commands"),
-		CommandManager = brackets.getModule("command/CommandManager"),
-		KeyBindingManager = brackets.getModule("command/KeyBindingManager"),
-		EditorManager = brackets.getModule("editor/EditorManager"),
-		MainViewManager = brackets.getModule("view/MainViewManager"),
-		Menus = brackets.getModule("command/Menus"),
-		//bootstrapTemplate = require("text!template/start.html"),
-		sidebar = $("#sidebar"),
-		toolbar = $("#main-toolbar"),
-		menu;
+            DocumentManager = brackets.getModule("document/DocumentManager"),
+            Commands = brackets.getModule("command/Commands"),
+            CommandManager = brackets.getModule("command/CommandManager"),
+            KeyBindingManager = brackets.getModule("command/KeyBindingManager"),
+            EditorManager = brackets.getModule("editor/EditorManager"),
+            MainViewManager = brackets.getModule("view/MainViewManager"),
+            Menus = brackets.getModule("command/Menus"),
+            //bootstrapTemplate = require("text!template/start.html"),
+            sidebar = $("#sidebar"),
+            toolbar = $("#main-toolbar"),
+            menu;
         //var xurl = require.toUrl("text!text.html");
 
         function ali() {
@@ -61,7 +61,12 @@
                 doc = DocumentManager.createUntitledDocument(docIndex++, defaultExtension);
 
             MainViewManager._edit(MainViewManager.ACTIVE_PANE, doc);
-            templateHandle(xurl);
+            $.get(xurl, function(response) { 
+                templateHandle(response);
+                //alert(response) 
+
+            });
+            //templateHandle(xurl);
             return new $.Deferred().resolve(doc).promise();
         }
         ali();
