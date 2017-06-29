@@ -7,6 +7,6 @@
     "author": "Riaz Uddin Masum <masum@activelava.net> (http://www.activelava.net)",
     "license": "MIT",
     "engines": {
-        "brackets": "<=1.8.0"
+        "brackets": ">=1.8.0"
     }
 }
