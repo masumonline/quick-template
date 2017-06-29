@@ -1,10 +1,10 @@
 {
     "name": "quicktemplate",
     "title": "Quick Template",
-    "description": "Add template Quickly to your Project",
+    "description": "Add template Quickly to your Project using Brackets.io Editor",
     "homepage": "https://github.com/masumonline/quick-theme.git",
     "version": "1.0.1",
-    "author": "Riaz Uddin Masum <masum@activelava.net> (http://www.activelava.net)",
+    "author": "Riaz Uddin Masum <masum@activelava.net> (https://www.activelava.net)",
     "license": "MIT",
     "engines": {
         "brackets": ">=1.8.0"
