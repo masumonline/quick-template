@@ -1,17 +1,19 @@
 <div class="bottom-panel helloworld-panel" id="helloworldPanel">
     <script>
-        var docIndex = 1;
-        var DocumentManager = brackets.getModule("document/DocumentManager");
-        var MainViewManager = brackets.getModule("view/MainViewManager");
 
-        var CommandManager = brackets.getModule("command/CommandManager"),
-            Menus = brackets.getModule("command/Menus"),
-            panelManager = brackets.getModule("view/WorkspaceManager"),
-            ExtensionUtils = brackets.getModule("utils/ExtensionUtils"), 
-            AppInit = brackets.getModule("utils/AppInit");
-        
-            var xurl = "text.html";
-        
+        var docIndex = 1,
+		DocumentManager = brackets.getModule("document/DocumentManager"),
+		Commands = brackets.getModule("command/Commands"),
+		CommandManager = brackets.getModule("command/CommandManager"),
+		KeyBindingManager = brackets.getModule("command/KeyBindingManager"),
+		EditorManager = brackets.getModule("editor/EditorManager"),
+		MainViewManager = brackets.getModule("view/MainViewManager"),
+		Menus = brackets.getModule("command/Menus"),
+		//bootstrapTemplate = require("text!template/start.html"),
+		sidebar = $("#sidebar"),
+		toolbar = $("#main-toolbar"),
+		menu;
+        //var xurl = require.toUrl("text!text.html");
 
         function ali() {
             var getJSON = function(url) {
@@ -34,15 +36,15 @@
             getJSON('http://api.bddevwork.net/api.php').then(function(data) {
 
                 $.each(data, function(data, value) {
-                    result.innerHTML += 
+                    result.innerHTML +=
                         "<div class='box'>" +
-                        "<div class='title'>" + value.theme_name + "</div><hr>"+
-                        "<div class='theme_thumb'>" + "<img onclick='getFile(this.id)' src='"+value.theme_thumb +"' id='"+value.theme_url +"'  >" +
+                        "<div class='title'>" + value.theme_name + "</div><hr>" +
+                        "<div class='theme_thumb'>" + "<img onclick=getFile(this.id) src='" + value.theme_thumb + "' id='" + value.theme_url + "'  >" +
                         "</div>" +
                         "</div>";
                 });
 
-            }, function(status) { 
+            }, function(status) {
                 alert('Something went wrong.');
             });
         }
@@ -64,9 +66,8 @@
         }
         ali();
 
-
     </script>
     <h3 class="text-center">Quick Theme</h3>
-    <div id="result"> 
+    <div id="result">
     </div>
 </div>
