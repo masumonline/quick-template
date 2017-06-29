@@ -3,7 +3,7 @@
     "title": "Quick Template",
     "description": "Add template Quickly to your Project",
     "homepage": "https://github.com/masumonline/quick-theme.git",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Riaz Uddin Masum <masum@activelava.net> (http://www.activelava.net)",
     "license": "MIT",
     "engines": {
