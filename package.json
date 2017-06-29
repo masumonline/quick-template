@@ -2,11 +2,11 @@
     "name": "quicktemplate",
     "title": "Quick Template",
     "description": "Add template Quickly to your Project",
-    "homepage": "https://github.com/cfjedimaster/something real here",
+    "homepage": "https://github.com/masumonline/quick-theme.git",
     "version": "1.0.0",
     "author": "Riaz Uddin Masum <masum@activelava.net> (http://www.activelava.net)",
     "license": "MIT",
     "engines": {
-        "brackets": "<=1.9.0"
+        "brackets": "<=1.8.0"
     }
 }
