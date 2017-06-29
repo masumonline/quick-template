@@ -1,10 +1,6 @@
-## that is Quick Theme
+## What is Quick Theme?
 
 Quick Theme is a html template provider for Brackers.io Editor . that ad d html template to your brackers editor. when you want to create a new web project you need loots of starting code. this extention make it easy to add html code to yor project.
-
-## Code Example
-
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
 ## Installation
 
