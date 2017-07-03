@@ -12,7 +12,7 @@ After Install. click File menu then Quick Template in menu. or CTRl+Alt+Q for sh
 
 ## Tests
 
-This Extention Tested with Brackets 1.8 and 1.9 in Windows, Linux and Mac. Don't rename the files you find there in order to keep the extension working.
+This Extention Tested with Brackets 1.8 and 1.9 in Windows, Linux nad Mac. Don't rename the files you find there in order to keep the extension working.
 
 ## License
 

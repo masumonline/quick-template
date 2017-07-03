@@ -11,5 +11,10 @@
 
 .title {
     text-align: center;
-    font-weight: bold;
+font-weight: bold;
+}
+
+#quick-icon {
+    background-image: url(icons/icon.png);
+    background-size: 24px;
 }
