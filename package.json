@@ -1,9 +1,9 @@
 {
     "name": "quicktemplate",
     "title": "Quick Template",
-    "description": "Add Template Quickly to your Project. Click File then Quick Template or Click right side QuickTemplate Icon to active it.",
+    "description": "Add Template Quickly to your Project. Click right side QuickTemplate Icon to active it.",
     "homepage": "https://github.com/masumonline/quick-theme.git",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "author": "Riaz Uddin Masum <masum@activelava.net> (https://www.activelava.net)",
     "license": "MIT",
     "engines": {

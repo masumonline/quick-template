@@ -1,6 +1,9 @@
-<div class="bottom-panel helloworld-panel" id="helloworldPanel">
+<div class="helloworld-panel" id="helloworldPanel">
+    <div class="progress progress-striped active">
+        <div class="bar" style="width:100%;"></div>
+    </div>
     <script>
-
+        $('.modal').attr('id','quicktemplate');
         var docIndex = 1,
             DocumentManager = brackets.getModule("document/DocumentManager"),
             Commands = brackets.getModule("command/Commands"),
@@ -8,52 +11,56 @@
             KeyBindingManager = brackets.getModule("command/KeyBindingManager"),
             EditorManager = brackets.getModule("editor/EditorManager"),
             MainViewManager = brackets.getModule("view/MainViewManager"),
-            Menus = brackets.getModule("command/Menus"),
-            //bootstrapTemplate = require("text!template/start.html"),
-            sidebar = $("#sidebar"),
-            toolbar = $("#main-toolbar"),
-            menu;
-        //var xurl = require.toUrl("text!text.html");
+            Menus = brackets.getModule("command/Menus");
 
         function ali() {
-            var getJSON = function(url) {
-                return new Promise(function(resolve, reject) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('get', url, true);
-                    xhr.responseType = 'json';
-                    xhr.onload = function() {
-                        var status = xhr.status;
-                        if (status == 200) {
-                            resolve(xhr.response);
-                        } else {
-                            reject(status);
-                        }
-                    };
-                    xhr.send();
+            $(document).ready(function () {
+
+                var getJSON = function (url) {
+                    return new Promise(function (resolve, reject) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('get', url, true);
+                        xhr.responseType = 'json';
+                        xhr.onload = function () {
+                            var status = xhr.status;
+                            if (status == 200) {
+                                resolve(xhr.response);
+                            } else {
+                                reject(status);
+                            }
+                        };
+                        xhr.send();
+                    });
+                };
+                $(".progress").show();
+                $.getJSON('http://api.bddevwork.net/api.php').then(function (data) {
+                    $.each(data, function (data, value) {
+
+                        document.getElementsByClassName("modal-body")[0].innerHTML +=
+                            "<div class='box'>" +
+                            "<div class='title'>" + value.theme_name + "</div><hr>" +
+                            "<div class='theme_thumb'>" + "<img onclick=getFile(this.id) src='" + value.theme_thumb + "' id='" + value.theme_url + "'  >" +
+                            "</div>" +
+                            "<div class='text-center'>" +
+                            "<a class='btn primary' href='" + value.theme_url + "'>Demo" +
+                            "</a>" +
+                            "</div>" +
+                            "</div>";
+                    });
+                    $(".progress").hide();
+
+                }, function (status) {
+                    alert('Something went wrong.');
                 });
-            };
-
-            $.getJSON('http://api.bddevwork.net/api.php').then(function(data) {
-
-                $.each(data, function(data, value) {
-                    result.innerHTML +=
-                        "<div class='box'>" +
-                        "<div class='title'>" + value.theme_name + "</div><hr>" +
-                        "<div class='theme_thumb'>" + "<img onclick=getFile(this.id) src='" + value.theme_thumb + "' id='" + value.theme_url + "'  >" +
-                        "</div>" +
-                        "</div>";
-                });
-
-            }, function(status) {
-                alert('Something went wrong.');
             });
+
         }
 
         function templateHandle(templateContent) {
             try {
                 var activeEditor = EditorManager.getActiveEditor();
                 activeEditor.document.replaceRange(templateContent, activeEditor.getCursorPos());
-            } catch (err) {}
+            } catch (err) { }
         }
 
         function getFile(xurl) {
@@ -61,16 +68,15 @@
                 doc = DocumentManager.createUntitledDocument(docIndex++, defaultExtension);
 
             MainViewManager._edit(MainViewManager.ACTIVE_PANE, doc);
-            $.get(xurl, function(response) { 
+            $.get(xurl, function (response) {
                 templateHandle(response);
             });
             //templateHandle(xurl);
             return new $.Deferred().resolve(doc).promise();
         }
-        ali();
 
+        ali();
     </script>
-    <h3 class="text-center">Quick Theme</h3>
-    <div id="result">
-    </div>
+
+
 </div>

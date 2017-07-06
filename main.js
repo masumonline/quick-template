@@ -1,38 +1,70 @@
-define(function(require, exports, module) {
+define(function (require, exports, module) {
     "use strict";
     var CommandManager = brackets.getModule("command/CommandManager"),
         Menus = brackets.getModule("command/Menus"),
         panelManager = brackets.getModule("view/WorkspaceManager"),
-        ExtensionUtils = brackets.getModule("utils/ExtensionUtils"), 
+        ExtensionUtils = brackets.getModule("utils/ExtensionUtils"),
+        Dialogs = brackets.getModule("widgets/Dialogs"),
+        DefaultDialogs = brackets.getModule("widgets/DefaultDialogs"),
         AppInit = brackets.getModule("utils/AppInit");
 
-    var QUICKTEMPLATE_EXECUTE = "QuickTemplate";
+    var QUICKTEMPLATE_EXECUTE = "Quick Template";
     var panel;
-    var panelHtml     = require("text!panel.html");
-    
-    function handlePanel() {
-        if(panel.isVisible()) {
-            panel.hide();
-            CommandManager.get(QUICKTEMPLATE_EXECUTE).setChecked(false);
-        } else {
-            panel.show();
-            CommandManager.get(QUICKTEMPLATE_EXECUTE).setChecked(true);
-        }
-    }
+    var btns = [{
+        className: Dialogs.DIALOG_BTN_CLASS_PRIMARY,
+        id: "close",
+        text: "Close"
+    }];
 
     ExtensionUtils.loadStyleSheet(module, "style.css");
-    CommandManager.register("Quick Template", QUICKTEMPLATE_EXECUTE, handlePanel);
 
-    var menu = Menus.getMenu(Menus.AppMenuBar.FILE_MENU);
-    menu.addMenuItem(QUICKTEMPLATE_EXECUTE, "Ctrl-Alt-Q");
-     $(document.createElement('a'))
+    $(document.createElement('a'))
         .attr('id', 'quick-icon')
         .attr('href', '#')
         .attr('title', QUICKTEMPLATE_EXECUTE)
         .on('click', function () {
-            handlePanel();
+            run();
         })
         .appendTo($('#main-toolbar .buttons'));
-    panel = panelManager.createBottomPanel(QUICKTEMPLATE_EXECUTE, $(panelHtml));
 
+    function templateHandle(templateContent) {
+        try {
+            var activeEditor = EditorManager.getActiveEditor();
+            activeEditor.document.replaceRange(templateContent, activeEditor.getCursorPos());
+        } catch (err) { }
+    }
+
+    function getFile(xurl) {
+        var defaultExtension = ".html",
+            doc = DocumentManager.createUntitledDocument(docIndex++, defaultExtension);
+
+        MainViewManager._edit(MainViewManager.ACTIVE_PANE, doc);
+        $.get(xurl, function (response) {
+            templateHandle(response);
+        });
+        return new $.Deferred().resolve(doc).promise();
+    }
+
+    function templateHandle(templateContent) {
+        try {
+            var activeEditor = EditorManager.getActiveEditor();
+            activeEditor.document.replaceRange(templateContent, activeEditor.getCursorPos());
+        } catch (err) { }
+    }
+
+    function getFile(xurl) {
+        var defaultExtension = ".html",
+            doc = DocumentManager.createUntitledDocument(docIndex++, defaultExtension);
+
+        MainViewManager._edit(MainViewManager.ACTIVE_PANE, doc);
+        $.get(xurl, function (response) {
+            templateHandle(response);
+        });
+
+        return new $.Deferred().resolve(doc).promise();
+    }
+
+    function run() {
+        Dialogs.showModalDialog(DefaultDialogs.DIALOG_ID_INFO, QUICKTEMPLATE_EXECUTE, require("text!panel.html"), btns);
+    }
 });
