@@ -4,7 +4,7 @@
 .box {
     width:200px;
     float: left;
-    padding: 10px;
+    padding: 10px 5px;
     overflow: hidden;
     display:block;
 }
@@ -17,4 +17,12 @@ font-weight: bold;
 #quick-icon {
     background-image: url(icons/icon.png);
     background-size: 24px;
+}
+
+#quicktemplate {
+    width: 70%;
+}
+
+hr {
+    margin: 5px 0;
 }
