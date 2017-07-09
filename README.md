@@ -1,5 +1,7 @@
 ## What is Quick Template?
 
+[![Quick Template](http://api.bddevwork.net/youtube_thumb.png)](https://www.youtube.com/watch?v=-iyPdkEqJ9o "Quick Template")
+
 Quick Template is a html template provider for Brackers.io Editor. That add html template to your brackers editor. when you want to create a new web project you need loots of starting code. this extention make it easy to add html code to yor project.
 
 ## Installation
@@ -8,7 +10,7 @@ Open Brackets Extention manager then search "quicktemplate". then click install.
 
 ## Uses
 
-After Install. click File menu then Quick Template in menu. or CTRl+Alt+Q for shortcut.
+After Install. click The Q Icon Right site Toolbar to Start Working.
 
 ## Tests
 
