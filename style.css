@@ -26,3 +26,9 @@ font-weight: bold;
 hr {
     margin: 5px 0;
 }
+
+.orange{
+    background-color: #EF6C00 !important;
+    color : #fff !important;
+    
+}
